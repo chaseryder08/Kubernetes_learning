@@ -38,6 +38,67 @@ Master - has kube-apiserver, (makes master)
 
 Slave/worker - kublet agent (gives health information of nodes, and can received requests), container runtime (docker)
 
-# kubectl - CLI utility
+## kubectl - CLI utility
 - tool used to deploy and manage applications on K8 cluster
  
+
+## want to deploy app in form of containers, containers on set of machines (worker nodes) -- containers are encapsulated in POD - single instance of application 
+
+### POD smallest object in kubernetes
+
+### when more users are using application, create more pods that contain the instance;
+
+### can also create new K8 node that holds another pod
+
+### Pods have 1:1 relatinship with containers, tos cale up create new pods,or delete pods to scale down
+
+### Pods can hold diff containers; helper container can work for application
+
+//
+
+# Kubectl
+> how to deploy pods
+## deploys docker container by creating pod - deploys instance of image --
+
+## docker hub - public repo 
+
+<code> kubectl run nginx --image nginx </code>
+
+<code>kubectl get pods </code>
+<code>kubectl describe pod nginx</code>
+<code>kubectl get pods -o wide</code>
+
+---
+
+YAML
+
+> xml vs json vs yaml
+
+all used to store data
+
+number of spaces for yaml is key
+
+<code>
+
+Fruits:
+  - Orange
+  - Apple
+  - Bananna
+
+</code>
+
+# creating pod using YAML config file
+K8 uses yaml for config file for pods
+
+> required fields / root level properties in config file :
+
+<code>
+apiVersion: v1 (version of API - depending on what creating)
+kind: Pod (type of object want to create)
+metadata: (data about object)
+    name: myapp-pod
+    labels:
+        app: myapp
+
+spec:
+</code>
